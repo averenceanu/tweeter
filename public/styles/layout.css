@@ -25,6 +25,13 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- .bold {
-  font-weight: bold;
- }
+.bold {
+ font-weight: bold;
+}
+
+.container {
+ width: 90%; 
+ margin-left: auto;
+ margin-right: auto;
+ background-color: #f4f1ec;
+}
