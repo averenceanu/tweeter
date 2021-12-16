@@ -75,11 +75,8 @@ $(document).ready(function(){
 
   $newTweet.on('submit', function(event){
     event.preventDefault();
-    console.log("New Tweet was submitted!");
     const message = $("#tweet-text").val().trim().length;
-    console.log("message:", message);
     const serializedData = $(this).serialize();
-    console.log(serializedData)
     //if the tweet content is too long > alert too many caracters 
     if (message > 140) {
       alert('Your tweet contains too many caracters!')
@@ -92,7 +89,7 @@ $(document).ready(function(){
       url: '/tweets/',
       data: serializedData,
       success: (response) => {
-        console.log(response);
+        loadTweets();
       },
       error: (err) => {
         console.log(err)
@@ -108,7 +105,6 @@ $(document).ready(function(){
       method: 'GET',
       dataType: 'json',
       success: (tweets) => {
-        console.log(`tweets: ${tweets}`)
         renderTweets(tweets);
       },
       error: (err) => {
