@@ -3,9 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-function closeAlert () {
-  $('#alert').hide();
-};
 
 $(document).ready(function(){
   const createTweetElement = function(tweet){
@@ -56,18 +53,16 @@ $(document).ready(function(){
     const serializedData = $(this).serialize();
     //if the tweet content is too long > alert too many caracters 
     if (message > 140) {
+      $('.alert-message').removeClass('alert').empty()
       const $div = $('<div>').text("Your tweet contains too many characters!")
       $('.alert-message').append($div).addClass('alert');
-      $('.alert-message').show();
-      // $('.alert-message').removeClass('alert').empty()
       return;
     } 
-    else if (message === 0) {
+    if (message === 0) {
+      //making sure that this class is not there initially 
+      $('.alert-message').removeClass('alert').empty()
       const $div = $('<div>').text("Your tweet is empty...")
       $('.alert-message').append($div).addClass('alert');
-      $('.alert-message').show();
-      // //making sure that this class is not there initially 
-      // $('.alert-message').removeClass('alert').empty()
       return;
     }
     $.ajax({
@@ -76,6 +71,8 @@ $(document).ready(function(){
       data: serializedData,
       success: (response) => {
         $('.alert-message').removeClass('alert').empty()
+        $('#tweet-text').val("");
+        $(".counter").val("140");
         loadTweets();
       },
       error: (err) => {

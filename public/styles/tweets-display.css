@@ -55,6 +55,7 @@ header {
   padding: 0.5em; 
   margin: 0.5em 0.5em 0.5em;
   border-bottom: 0.2em solid #545149;
+  overflow-wrap: break-word;
 }
 
 

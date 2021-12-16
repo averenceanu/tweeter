@@ -47,7 +47,7 @@
     <!-- BODY -->
     <div id="body-container">
     <header id="header">
-      <div>
+      <div class="image-avatar">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
@@ -60,8 +60,8 @@
     <main class="container">
       <section class="new-tweet">
         <h2 class="center-item">Compose Tweet</h2>
-        <div class="alert-message" style="display: none;" id="alert"> 
-          <span class="closebtn" onclick="closeAlert()">&times;</span> 
+        <div class="alert-message" id="alert"> 
+         <!-- <span class="closebtn" onclick="closeAlert()">&times;</span> >-->
         </div>
         <form method="POST" action="/tweets/" id="new-tweet-form">
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
