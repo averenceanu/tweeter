@@ -63,6 +63,7 @@ $(document).ready(function(){
       return;
     } 
     else if (message === 0) {
+      const $div = $('<div>').text("Your tweet is empty...")
       $('.alert-message').append($div).addClass('alert');
       $('.alert-message').show();
       // //making sure that this class is not there initially 

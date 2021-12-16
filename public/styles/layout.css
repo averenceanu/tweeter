@@ -35,3 +35,32 @@ body {
  margin-right: auto;
  background-color: #f4f1ec;
 }
+
+@media only screen and (min-width: 769px) { 
+
+  .container {
+    width: 57.3%;
+    margin-right: 5%;
+  }
+
+  #header {
+    width: 33.3%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  #body-container{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (min-width: 1179px) { 
+  #body-container{
+    margin-top: 12%;
+  }
+}

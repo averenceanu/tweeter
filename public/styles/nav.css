@@ -28,3 +28,22 @@
 .fa-angle-double-down{
   color: red
 }
+
+/*
+@media only screen and (max-width: 450px) {
+  .newTweet {
+    font-size: 20px;
+  }
+}
+*/
+
+
+@media only screen and (max-width: 768px) { 
+  #navbar {
+    background-color: transparent;
+  }
+
+  #header {
+    width: 100%;
+  }
+}; 
