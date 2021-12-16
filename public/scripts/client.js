@@ -4,30 +4,30 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const tweetsDatabase = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" 
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+// const tweetsDatabase = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png",
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" 
+//     },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ];
 
 $(document).ready(function(){
   const createTweetElement = function(tweet){
@@ -69,5 +69,54 @@ $(document).ready(function(){
     //takes return value and appends it to the tweets container
   };
   
-  renderTweets(tweetsDatabase);
+
+  //add an event listener for submit and prevent its default behaviour
+  const $newTweet = $('#new-tweet-form');
+
+  $newTweet.on('submit', function(event){
+    event.preventDefault();
+    console.log("New Tweet was submitted!");
+    const message = $("#tweet-text").val().trim().length;
+    console.log("message:", message);
+    const serializedData = $(this).serialize();
+    console.log(serializedData)
+    //if the tweet content is too long > alert too many caracters 
+    if (message > 140) {
+      alert('Your tweet contains too many caracters!')
+    } 
+    // else if (message === 0) {
+    //   alert('Your tweet is empty...')
+    // }
+    $.ajax({
+      method: 'POST',
+      url: '/tweets/',
+      data: serializedData,
+      success: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err)
+        alert("Your tweet is empty...")
+      }
+    });
+  });
+
+  //function reponsible for fetching tweets from /tweets page
+  const loadTweets = function (){
+    $.ajax({
+      url: '/tweets/',
+      method: 'GET',
+      dataType: 'json',
+      success: (tweets) => {
+        console.log(`tweets: ${tweets}`)
+        renderTweets(tweets);
+      },
+      error: (err) => {
+        console.log(`error: ${err}`)
+      }
+    });
+  };
+
+  loadTweets();
+
 });
