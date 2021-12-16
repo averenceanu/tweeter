@@ -55,6 +55,9 @@
     <main class="container">
       <section class="new-tweet">
         <h2 class="center-item">Compose Tweet</h2>
+        <div class="alert-message"> 
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        </div>
         <form method="POST" action="/tweets/" id="new-tweet-form">
           <!--<label for="tweet-text">What are you humming about?</label> -->
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>

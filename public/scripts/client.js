@@ -79,21 +79,30 @@ $(document).ready(function(){
     const serializedData = $(this).serialize();
     //if the tweet content is too long > alert too many caracters 
     if (message > 140) {
-      alert('Your tweet contains too many caracters!')
+      $('.alert-message').removeClass('alert').empty()
+      const $div = $('<div>').text("Your tweet contains too many characters!")
+      $('.alert-message').append($div).addClass('alert');
+      return;
     } 
-    // else if (message === 0) {
-    //   alert('Your tweet is empty...')
-    // }
+    else if (message === 0) {
+      //making sure that this class is not there initially 
+      $('.alert-message').removeClass('alert').empty()
+      const $div = $('<div>').text("Your tweet is empty...")
+      //adding the class alert
+      $('.alert-message').append($div).addClass('alert');
+      return;
+    }
     $.ajax({
       method: 'POST',
       url: '/tweets/',
       data: serializedData,
       success: (response) => {
+        $('.alert-message').removeClass('alert').empty()
         loadTweets();
       },
       error: (err) => {
         console.log(err)
-        alert("Your tweet is empty...")
+       //alert("Your tweet is empty...")
       }
     });
   });
@@ -114,5 +123,4 @@ $(document).ready(function(){
   };
 
   loadTweets();
-
 });
