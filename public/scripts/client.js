@@ -3,31 +3,9 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-// const tweetsDatabase = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" 
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
+function closeAlert () {
+  $('#alert').hide();
+};
 
 $(document).ready(function(){
   const createTweetElement = function(tweet){
@@ -66,7 +44,6 @@ $(document).ready(function(){
       const $tweet = createTweetElement(tweet); 
       $tweetsContainer.prepend($tweet)
     }
-    //takes return value and appends it to the tweets container
   };
   
 
@@ -79,17 +56,17 @@ $(document).ready(function(){
     const serializedData = $(this).serialize();
     //if the tweet content is too long > alert too many caracters 
     if (message > 140) {
-      $('.alert-message').removeClass('alert').empty()
       const $div = $('<div>').text("Your tweet contains too many characters!")
       $('.alert-message').append($div).addClass('alert');
+      $('.alert-message').show();
+      // $('.alert-message').removeClass('alert').empty()
       return;
     } 
     else if (message === 0) {
-      //making sure that this class is not there initially 
-      $('.alert-message').removeClass('alert').empty()
-      const $div = $('<div>').text("Your tweet is empty...")
-      //adding the class alert
       $('.alert-message').append($div).addClass('alert');
+      $('.alert-message').show();
+      // //making sure that this class is not there initially 
+      // $('.alert-message').removeClass('alert').empty()
       return;
     }
     $.ajax({
