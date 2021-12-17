@@ -6,7 +6,7 @@ $(document).ready(function() {
     //calculate # of caracters left  
     const caractersLeft = 140 - $textareaLength;
     // change the value of the counter HTML to number of carathers left and
-    const $tweetCaracterCounter = $(this).siblings(".submit-counter").find(".counter").html(caractersLeft)
+    const $tweetCaracterCounter = $(this).siblings(".submit-counter").find(".counter").html(caractersLeft);
     //add class .red when counter negative
     if (caractersLeft < 0){
       $(this).siblings(".submit-counter").find(".counter").addClass("red");
