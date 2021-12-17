@@ -3,7 +3,7 @@ Hey there! I am Alex! This is my attempt at Twitter!
 
 Tweeter is a simple, single-page Twitter clone.
 
-In this project I put in practice HTML, CSS, JS, jQuert, AJAX and I think it tourned out pretty cool!
+In this project I put in practice HTML, CSS, JS, jQuert, AJAX and I think it turned out pretty cool!
 
 
 ## Getting Started
